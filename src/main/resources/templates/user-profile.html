@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Profile</title>
+</head>
+<body>
+<footer>
+    <form action="/logout" method="post">
+        <input type="submit" value="Выйти"/>
+    </form>
+</footer>
+<h1>User Profile</h1>
+<div>
+    <h2>Your Information</h2>
+    <form th:action="@{/user/update}" th:object="${user}" method="post">
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" th:field="*{name}" readonly />
+        </div>
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" th:field="*{lastName}" readonly />
+        </div>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:field="*{username}" readonly />
+        </div>
+        <div>
+            <label for="roles">Roles:</label>
+            <ul>
+                <li th:each="role : ${user.roles}" th:text="${role.name}"></li>
+            </ul>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление пользователя</title>
+</head>
+<body>
+<footer>
+    <form action="/logout" method="post">
+        <input type="submit" value="Выйти"/>
+    </form>
+</footer>
+<h1>Добавление нового пользователя</h1>
+<form action="/admin/add" method="post">
+    Имя пользователя: <input type="text" name="username" required><br>
+    Пароль: <input type="password" name="password" required><br>
+    <div>
+        <p>Выберите роли:</p>
+        <div th:each="role : ${roles}">
+            <input type="checkbox" name="rolesIds" th:value="${role.id}"> <span th:text="${role.name}"></span><br>
+        </div>
+    </div>
+    <button type="submit">Добавить пользователя</button>
+</form>
+</body>
+</html>
