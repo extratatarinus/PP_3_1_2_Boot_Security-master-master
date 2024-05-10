@@ -39,7 +39,6 @@ public class MainController {
     }
 
 
-
     @GetMapping("/admin/delete/{id}")
     public String deleteUser(@PathVariable Long id, Principal principal) {
         User currentUser = userDao.findByUsername(principal.getName());
@@ -71,6 +70,7 @@ public class MainController {
             return "add-user";
         }
     }
+
     @RequestMapping(value = "/admin/edit/{id}", method = {RequestMethod.GET, RequestMethod.POST})
     public String editUser(@PathVariable Long id, Model model, @ModelAttribute("user") User user, @RequestParam(required = false) List<Long> rolesIds) {
         if ("POST".equals(((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getMethod())) {
